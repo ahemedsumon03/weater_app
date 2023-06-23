@@ -19,20 +19,32 @@ export const getWeatherData = async (city) => {
 export const forecastData = (weatherObj) => {
     const { timezone, daily, hourly } = weatherObj;
     
-    daily = daily.slice(1, 6).map((day) => {
-        return {
-            title: formatTime(timezone),
-            temp: day.temp.day,
-            icon: day.weather[0].icon,
-        }
-    });
-    hourly = hourly.slice(1, 6).map((hour) => { 
-        return {
-            title: formatTime(timezone),
-            temp: hour.temp,
-            icon: hour.weather[0].icon,
-        }
-    });
+    { 
+        daily.length > 0 ? (
+            daily = daily.slice(1, 6).map((day) => {
+                return {
+                    title: formatTime(timezone),
+                    temp: day.temp.day,
+                    icon: day.weather[0].icon,
+                }
+            })
+        ) : (
+           <p className='text-2xl'>Not found</p>     
+        )
+    }
+    { 
+        hourly ? (
+            hourly = hourly.slice(1, 6).map((hour) => {
+                return {
+                    title: formatTime(timezone),
+                    temp: hour.temp,
+                    icon: hour.weather[0].icon,
+                }
+            })
+        ) : (
+            <p className='text-2xl'>Not found</p>
+        )
+    }
 
     return { timezone, daily, hourly };
 }
