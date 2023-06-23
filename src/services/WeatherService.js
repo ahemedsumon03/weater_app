@@ -15,8 +15,7 @@ export const getWeatherData = async (city) => {
     return { ...weatherdata, ...detailsWeatherdata};
 }
 
-export const formatTime = (
-    secs,
-    timezone,
-    format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a") => DateTime.fromSeconds(secs).setZone(timezone).toFormat(format);
+export const formatTime = (timezone) => (
+    DateTime.now().setZone(timezone).endOf("day").toFormat("cccc, dd LLL yyyy")
+);
 

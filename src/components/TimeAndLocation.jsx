@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { formatTime } from '../services/WeatherService';
 
 const TimeAndLocation = ({ weather  }) => {
     return (
         <div>
             <div className='flex items-center justify-center my-6'>
                 <p className='text-white text-xl font-extralight'>
-                    Friday, 23 June | Local Time : 6.26 PM
+                    {formatTime(weather?.timezone) }
                 </p>
             </div>
 
