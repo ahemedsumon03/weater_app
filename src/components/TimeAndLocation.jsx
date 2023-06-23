@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-const TimeAndLocation = () => {
+const TimeAndLocation = ({ weather  }) => {
     return (
         <div>
             <div className='flex items-center justify-center my-6'>

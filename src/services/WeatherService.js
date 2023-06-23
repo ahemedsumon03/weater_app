@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import { DateTime } from 'luxon';
+
 export const getWeatherData = async (city) => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city}&appid=${import.meta.env.VITE_API_KEY}`);
 
@@ -12,3 +14,9 @@ export const getWeatherData = async (city) => {
 
     return { ...weatherdata, ...detailsWeatherdata};
 }
+
+export const formatTime = (
+    secs,
+    timezone,
+    format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a") => DateTime.fromSeconds(secs).setZone(timezone).toFormat(format);
+
