@@ -17,9 +17,9 @@ const Inputs = () => {
             </div>
 
             <div className='flex flex-row w-1/4 items-center justify-center'>
-                <button type='button' name="metric" className='text-white text-xl font-light'>*C</button>
+                <button type='button' name="metric" className='text-white text-xl font-light'>ºC</button>
                 <p className='text-xl mx-1 text-white'>|</p>
-                <button type='button' name="metric" className='text-white text-xl font-light'>*F</button>
+                <button type='button' name="metric" className='text-white text-xl font-light'>ºF</button>
             </div>
         </div>
     )
