@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { formatTime } from '../services/WeatherService';
+import React, { useContext } from 'react'
+import { WeatherServiceContext } from '../context/WeatherServiceContext';
 
-const TimeAndLocation = ({ weather  }) => {
+const TimeAndLocation = ({ weather }) => {
+    
+    const { formatTime } = useContext(WeatherServiceContext);
+ 
     return (
         <div>
             <div className='flex items-center justify-center my-6'>

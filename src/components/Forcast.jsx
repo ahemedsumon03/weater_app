@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { formatToLocalTime, iconUrlForCode } from '../services/WeatherService'
+import React, { useContext } from 'react'
+
+import { WeatherServiceContext } from '../context/WeatherServiceContext';
 
 const Forcast = ({ title, items, timezone }) => {
+
+    const { formatToLocalTime, iconUrlForCode } = useContext(WeatherServiceContext);
 
     return (
         <div>

@@ -6,11 +6,9 @@ import { WiHumidity } from 'react-icons/wi';
 import { RiCloudWindyFill } from 'react-icons/ri';
 import { BsFillSunFill } from 'react-icons/bs';
 
-
 const TempratureAndDetails = ({ myweather }) => {
     return (
         <div>
-           
             <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
                 {
                     myweather?.weather?.map((item, index) => (

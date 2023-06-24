@@ -1,8 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-undef */
 import { DateTime } from 'luxon';
+import { createContext } from 'react';
 
-export const getWeatherData = async (city) => {
+export const WeatherServiceContext = createContext();
+
+const getWeatherData = async (city) => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}?q=${city}&appid=${import.meta.env.VITE_API_KEY}`);
 
     const weatherdata = await response.json();
@@ -13,19 +17,37 @@ export const getWeatherData = async (city) => {
 
     const detailsWeatherdata = await reponse1.json();
 
-    return { ...weatherdata, ...detailsWeatherdata};
+    return { ...weatherdata, ...detailsWeatherdata };
 }
 
-
-export const formatTime = (timezone) => (
+const formatTime = (timezone) => (
     DateTime.now().setZone(timezone).endOf("day").toFormat("cccc, dd LLL yyyy")
 );
 
-export const formatToLocalTime = (
+const formatToLocalTime = (
     secs,
     zone,
     format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
 ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
-export const iconUrlForCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
+const iconUrlForCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
+
+
+export const WeatherServiceContextProvider = ({ children }) => { 
+
+    const contextValue = {
+        getWeatherData,
+        formatTime,
+        formatToLocalTime,
+        iconUrlForCode
+    }
+
+    return (
+        <WeatherServiceContext.Provider
+            value={contextValue}
+        >
+            { children }
+       </WeatherServiceContext.Provider>
+   )
+}
 
