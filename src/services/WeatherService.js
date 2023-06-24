@@ -16,40 +16,16 @@ export const getWeatherData = async (city) => {
     return { ...weatherdata, ...detailsWeatherdata};
 }
 
-export const forecastData = (weatherObj) => {
-    const { timezone, daily, hourly } = weatherObj;
-    
-    { 
-        daily.length > 0 ? (
-            daily = daily.slice(1, 6).map((day) => {
-                return {
-                    title: formatTime(timezone),
-                    temp: day.temp.day,
-                    icon: day.weather[0].icon,
-                }
-            })
-        ) : (
-           <p className='text-2xl'>Not found</p>     
-        )
-    }
-    { 
-        hourly ? (
-            hourly = hourly.slice(1, 6).map((hour) => {
-                return {
-                    title: formatTime(timezone),
-                    temp: hour.temp,
-                    icon: hour.weather[0].icon,
-                }
-            })
-        ) : (
-            <p className='text-2xl'>Not found</p>
-        )
-    }
-
-    return { timezone, daily, hourly };
-}
 
 export const formatTime = (timezone) => (
     DateTime.now().setZone(timezone).endOf("day").toFormat("cccc, dd LLL yyyy")
 );
+
+export const formatToLocalTime = (
+    secs,
+    zone,
+    format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
+) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+
+export const iconUrlForCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
 

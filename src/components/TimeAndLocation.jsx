@@ -13,7 +13,7 @@ const TimeAndLocation = ({ weather  }) => {
             </div>
 
             <div className='flex items-center justify-center my-3'>
-                <p className='text-white text-3xl font-medium'>Berlin,DE</p>
+                <p className='text-white text-3xl font-medium'>{ weather?.timezone}</p>
             </div>
         </div>
     )

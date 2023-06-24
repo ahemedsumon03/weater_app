@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { formatToLocalTime, iconUrlForCode } from '../services/WeatherService'
 
-const Forcast = ({ title }) => {
+const Forcast = ({ title, items, timezone }) => {
+
     return (
         <div>
             <div className='flex items-center justify-start mt-6'>
@@ -9,27 +12,17 @@ const Forcast = ({ title }) => {
             </div>
             <hr className='my-2'/>
             <div className='flex flex-row justify-between items-center text-white'>
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='text-light text-sm'>4.30 AM</p>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="sun" className='w-20' />
-                    <p className='font-medium'>20º</p>
-                </div>
-
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='text-light text-sm'>4.30 AM</p>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="sun" className='w-20' />
-                    <p className='font-medium'>20º</p>
-                </div>
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='text-light text-sm'>4.30 AM</p>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="sun" className='w-20' />
-                    <p className='font-medium'>20º</p>
-                </div>
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='text-light text-sm'>4.30 AM</p>
-                    <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="sun" className='w-20' />
-                    <p className='font-medium'>20º</p>
-                </div>
+                {
+                    items &&
+                    items?.slice(1,6)?.map((item,index) => (
+                        <div key={index} className='flex flex-col items-center justify-center'>
+                            <p className='text-light text-sm'>{formatToLocalTime(item?.dt,timezone,'ccc')}</p>
+                            <img src={iconUrlForCode(item?.weather[0]?.icon)} alt="sun" className='w-20' />
+                            <p className='font-medium'>{`${(item?.temp?.day - 273).toFixed()}°`}</p>
+                        </div>
+                  ))
+                }
+                
             </div>
         </div>
     )
