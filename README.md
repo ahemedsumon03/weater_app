@@ -7,6 +7,6 @@
 6. Use https://api.openweathermap.org API for managing current and daily basic weather in different places in the whole country.
 
 7. In Forecast.JSX component User can show different day weather temperatures,
-8. In Input.JSX component User can able to search for different location names, Write the location in the search bar, and after 3 seconds include the time to write the location name in the search bar user get a result. In that area, I use debounce method to prevent every time API call when writing the location name.
+8. In Input.JSX component User can able to search for different location names, Write the location in the search bar, and after 2.5 seconds including the time to write the location name in the search bar user get a result. In that area, I use debounce method to prevent every time API call when writing the location name.
 9. In TempratureAndDetails.JSX component User can show today's weather temperature and today's high and low temperatures.
 10. In TimeAndLocation.JSX component User can show the current date and timezone.
