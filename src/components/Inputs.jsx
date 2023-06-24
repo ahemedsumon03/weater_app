@@ -13,7 +13,7 @@ const Inputs = ({ setCityname }) => {
                     // call debounce method in onChange handler
                     onChange={(e) => setTimeout(() => { 
                         setCityname(e.target.value)
-                    },3000)}
+                    },2500)}
                     className='text-xl font-light p-2 w-full show-xl focus:outline-none capitalize'
                 />
             </div>
