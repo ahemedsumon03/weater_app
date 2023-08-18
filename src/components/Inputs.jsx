@@ -10,10 +10,10 @@ const Inputs = ({ setCityname }) => {
                 <input
                     type="text"
                     placeholder="Search for city.."
-                    // call debounce method in onChange handler
+                    // call debounce method in onChange handler for prevent request to each chracter change
                     onChange={(e) => setTimeout(() => { 
                         setCityname(e.target.value)
-                    },2500)}
+                    },4000)}
                     className='text-xl font-light p-2 w-full show-xl focus:outline-none capitalize'
                 />
             </div>
